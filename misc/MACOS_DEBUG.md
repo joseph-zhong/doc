@@ -32,3 +32,41 @@ re-install the OS and to upgrade the Adobe Flash Player drivers if necessary
 
 At this point I haven't had any issues thus far in either discrete, integrated, or dynamically 
 switching mode and I don't have Adobe Flash Player installed.
+
+19 March 2017
+-------------
+
+- Crashed after opening VMFusion in Dynamic Switching Mode 
+  - It seems to run smoothly in Discrete Mode, but if I switch out of VMWare Fusion and into VSCode it crashed once
+
+23 March 2017
+-------------
+
+- I think I've figured it out: the key is to **ENABLE DYNAMIC SWITCHING in Energy Saver**
+  - I never really understood why the CUDA installation tutorials to turn it off, must be an outdated workaround 
+  - While watching videos in full screen or running WebGL applications crashing no longer occurs
+    - While typing this it crashed again while running Spotify in fullscreen
+
+3 April 2017
+------------
+
+- Disabled temporary files saving in Java Settings, seemed to improve things
+- Set Battery delay to 20min, AC to 3hrs
+- Upgrade CUDA to 8.0.71
+- Boot in SafeMode by holding `Shift` while booting as sanity check -- no crashes
+
+The above allowed me to run very intensive programs (VMWare, All my editors, two large textbooks in fullscreen...)
+
+- https://discussions.apple.com/thread/4622383?start=0&tstart=0
+
+```
+Last login: Mon Apr  3 21:21:55 on console
+~$ pmset -g | grep autopoweroff
+ autopoweroffdelay    28800
+ autopoweroff         1
+~$ sudo pmset -a autopoweroff 0
+Password:
+~$ pmset -g | grep autopoweroff
+ autopoweroffdelay    28800
+ autopoweroff         0
+```
